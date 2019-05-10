@@ -1,0 +1,24 @@
+<import src="./templates/movie-list/movie-list-template.wxml" />
+<import src="./templates/movie-grid/movie-grid-template.wxml" />
+<!-- 搜索框 -->
+<view class="search">
+  <icon type="search" class="search-icon" size="13" color="#405f80"></icon>
+  <input type="text" placeholder="龙猫" placeholder-class="placeholder" bindfocus="onBindFocus" bindblur="onBindBlur"/>
+  <image class="cancel" src="/images/icon/xx.png" bindtap="onCancelImgTap" wx:if="{{searchPannelShow}}"></image>
+</view>
+<!-- 电影内容 -->
+<view class="container" wx:if="{{containerShow}}">
+  <view class="movies-template">
+    <template is="movieListTemplate" data="{{...inTheaters}}"></template>
+  </view>
+  <view class="movies-template">
+    <template is="movieListTemplate" data="{{...comingSoon}}"></template>
+  </view>
+  <view class="movies-template">
+    <template is="movieListTemplate" data="{{...top250}}"></template>
+  </view>
+</view>
+<!-- 搜索结果 -->
+<view class="search-pannel" wx:if="{{searchPannelShow}}">
+  <template is="movieGridTemplate" data="{{...searchResult}}"></template>
+</view>
